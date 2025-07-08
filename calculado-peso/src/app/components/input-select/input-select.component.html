@@ -1,0 +1,31 @@
+<div class="flex flex-col relative {{ widthT }}">
+  <div class="flex border-2 border-[#EFEFEF] p-3 rounded-[10px] w-full">
+    <input
+      [formControl]="cidadeControl"
+      placeholder="Digite a resposta"
+      type="text"
+      class="outline-0 w-full"
+      (focus)="onInputFocus()"
+      (blur)="onInputBlur()"
+    />
+    <div class="flex items-center justify-center w-7 h-7 rounded-[3px] bg-gradient-to-t from-[#FFBB00] via-[#E3A701] to-[#FFBB00] cursor-pointer" (click)="toggleOptions()">
+      <app-icon name="Polygon" [sizeW]="10" [ngClass]="showDropdown ? 'rotate-180' : 'rotate-0'"></app-icon>
+    </div>
+  </div>
+  
+  @if (showDropdown && cidadesFiltradas.length > 0) {
+    <ul class="absolute top-full bg-white w-full max-h-[200px] overflow-y-auto border-2 border-[#EFEFEF] rounded-[10px] z-10 pl-3 pt-3 pb-3">
+      @for (cidade of cidadesFiltradas; track cidade) {
+        @if (secondForm) {
+          <li (click)="selecionarCidade(cidade)" class="hover:bg-gray-100 cursor-pointer py-1">
+            {{ cidade[paramOne] }}
+          </li>
+        } @else {
+          <li (click)="selecionarCidade(cidade)" class="hover:bg-gray-100 cursor-pointer py-1">
+            {{ cidade[paramOne] }} - {{ cidade[paramTwo] }}
+          </li>
+        }
+      }
+    </ul>
+  }
+</div>

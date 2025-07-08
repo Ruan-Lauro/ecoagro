@@ -1,0 +1,22 @@
+export type Transport = {
+  quantidade: number;
+  formato: string;
+  carregamento: string;
+  origem: string;
+  destino: string;
+  porto_origem: string;
+  porto_destino: string;
+  transit_time: string;
+  rel_rodoviario: number;
+  rel_porta_porto: number;
+  rel_ativ_porto: number;
+  rel_cabotagem: number;
+  rel_porto_porta: number;
+  total_rodoviario: number;
+  total_mercosul: number;
+  economia: number;
+  arvores: number;
+  gelo: number;
+  caminhoes: number;
+  credito_carbono: number;
+};

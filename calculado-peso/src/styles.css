@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme{
+    --font-family: 'Alexandria', 'Montserrat', sans-serif;
+    --color-green: #003805;
+}
+
+*{
+    font-family: 'Alexandria', 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}

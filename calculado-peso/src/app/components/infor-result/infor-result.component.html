@@ -1,0 +1,196 @@
+<main class="flex items-center justify-center w-[100%] h-full pb-20 bg-[#EFEFEF]" >
+    <div class="flex flex-col w-full lg:w-[80%] max-w-[1513px] lg:min-w-[950px] mt-7" >
+        <section class="flex items-center justify-center w-full bg-white pt-10 pb-20 rounded-[20px]" >
+            <div class="flex flex-col w-full lg:w-[900px]" >
+                <div class="w-full flex items-center justify-center gap-[5%] relative font-bold text-[25px] before:content-['.'] before:text-white before:w-[200px] before:border-b-2 before:border-[#EFEFEF] after:content-['.'] after:text-white after:w-[200px] after:border-b-2 after:border-[#EFEFEF] before:mt-[-55px] after:mt-[-55px] max-lg:mb-10">
+                    <h2 class="relative flex flex-col items-center justify-center after:content-['.'] after:text-white after:border-b-4 after:border-b-[#FFBB00] after:h-[20px] after:w-[92px]" >COMPARAÇÃO DE EMISSÕES</h2>
+                </div>
+                <div class="flex items-center w-full justify-center lg:gap-[5%] mt-10 max-lg:flex-col max-lg:gap-[50px] max-sm:gap-[70px]" >
+                    <div class="relative w-[336px]" >   
+                        <app-icon class="absolute left-[33%] top-[-50px] flex items-center justify-center w-[100px] h-[100px] border-white border-4 rounded-full bg-[#93B396]" [sizeW]="80" [sizeH]="67" name="TRUCK" ></app-icon>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#93B396] rounded-tl-[10px] rounded-tr-[10px]" >
+                            .
+                        </div>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#F5F5F5]" >
+                            <p>Rodoviário</p>
+                        </div>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#EDEDED] rounded-bl-[10px] rounded-br-[10px]" >
+                            <p class="text-[18px]" >{{formattedData.total_rodoviario}} Ton</p>
+                        </div>
+                    </div>
+                    <app-icon class="flex items-center max-lg:mt-[-20px] max-sm:mt-[-30px]" [sizeW]="100" [sizeH]="100" name="group107" ></app-icon>
+                    <div class="relative w-[336px]" >   
+                        <div class="absolute left-[15%] top-[-50px] flex  items-center gap-1" >
+                            <app-icon class=" flex items-center justify-center w-[70px] h-[70px] border-white border-4 rounded-full bg-[#93B396]" [sizeW]="45" [sizeH]="80" name="TRUCK" ></app-icon>
+                            <app-icon class=" flex items-center justify-center w-[100px] h-[100px] border-white border-4 rounded-full bg-[#93B396]" [sizeW]="80" [sizeH]="80" name="barge1" ></app-icon>
+                            <app-icon class=" flex items-center justify-center w-[70px] h-[70px] border-white border-4 rounded-full bg-[#93B396]" [sizeW]="45" [sizeH]="80" name="TRUCK" ></app-icon>
+                        </div>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#93B396] rounded-tl-[10px] rounded-tr-[10px]" >
+                            .
+                        </div>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#F5F5F5]" >
+                            <p>Marítimo</p>
+                        </div>
+                        <div class="flex items-center justify-center w-full h-[73px] bg-[#EDEDED] rounded-bl-[10px] rounded-br-[10px]" >
+                            <p class="text-[18px]" >{{formattedData.total_mercosul}} Ton</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="flex flex-col w-full bg-white pt-10 pb-20 rounded-[20px] mt-10" >
+            <div class="flex items-center lg:justify-between w-full lg:w-[900px] self-center border-b-4 border-[#F0EFEF] pb-8 max-lg:flex-col" >
+                <p class="sm:text-[20px] w-[80%] lg:w-[64%] max-lg:mb-10" >O transporte da sua carga de <span class="font-bold text-[#F4B300]" >{{formattedData.quantidade}} {{formattedData.carregamento}}</span> pelos serviços da <span class="font-bold text-[#F4B300]" >CMA CGM</span> Será responsável pela economia de:</p>
+                <div class="flex flex-col items-center gap-5 lg:mr-10" >
+                    <div class="flex bg-[#93B396] w-[100px] h-[100px] rounded-full items-center justify-center border-8 border-[#EFEFEF]" >
+                        <app-icon [name]="'co2'" [sizeW]="80" [sizeH]="80" class="flex items-center justify-center" ></app-icon>
+                    </div>
+                    <p class="text-[20px]" ><span class="font-bold text-[#F4B300]" >{{formattedData.economia}}</span> Toneladas de <span class="font-bold text-[#F4B300]" >CO2</span></p>
+                </div>
+            </div>
+            <div class="mt-10 flex flex-col lg:w-[900px] self-center" >
+                <h2 class="relative flex flex-col items-center justify-center text-[25px] after:content-['.'] after:text-white after:border-b-4 after:border-b-[#FFBB00] after:h-[20px] after:w-[92px] uppercase font-bold" >Isso é equivalente a:</h2>
+
+                <div class="grid sm:grid-cols-2 self-center mt-30 gap-y-20 gap-x-5" >
+                    <div class="w-[277px] h-[134px] bg-[#F0EFEF] rounded-[20px] flex flex-col items-center justify-center" >
+                        <div class="flex bg-[#A6CD8C] w-[80px] h-[80px] rounded-full items-center justify-center mt-[-70px] mb-[10px]" >
+                            <app-icon [name]="'tree-silhouette'" [sizeW]="80" [sizeH]="80" class="flex items-center justify-center" ></app-icon>
+                        </div>
+                        <p class="text-center w-[152px]" ><span class="font-bold text-[#F4B300]" >{{formattedData.arvores}} árvores</span> <br> plantadas</p>
+                    </div>
+                    <div class="w-[277px] h-[134px] bg-[#F0EFEF] rounded-[20px] flex flex-col items-center justify-center" >
+                        <div class="flex bg-[#9EB4D2] w-[80px] h-[80px] rounded-full items-center justify-center mt-[-70px] mb-[10px]" >
+                            <app-icon [name]="'glacier'" [sizeW]="80" [sizeH]="80" class="flex items-center justify-center" ></app-icon>
+                        </div>
+                        <p class="text-center w-[262px]" ><span class="font-bold text-[#F4B300]" >{{formattedData.gelo}} m² de gelo</span> marinho Ártico que deixará de derreter</p>
+                    </div>
+                    <div class="w-[277px] h-[134px] bg-[#F0EFEF] rounded-[20px] flex flex-col items-center justify-center" >
+                        <div class="flex bg-[#E4BB77] w-[80px] h-[80px] rounded-full items-center justify-center mt-[-70px] mb-[10px]" >
+                            <app-icon [name]="'truck2'" color="white" [sizeW]="80" [sizeH]="80" class="flex items-center justify-center" ></app-icon>
+                        </div>
+                        <p class="text-center w-[175px]" ><span class="font-bold text-[#F4B300]" >{{formattedData.caminhoes}} caminhão</span> que deixará de circular nas vias</p>
+                    </div>
+                    <div class="w-[277px] h-[134px] bg-[#F0EFEF] rounded-[20px] flex flex-col items-center justify-center" >
+                        <div class="flex bg-[#7F8486] w-[80px] h-[80px] rounded-full items-center justify-center mt-[-70px] mb-[10px]" >
+                            <app-icon [name]="'group76'" [sizeW]="80" [sizeH]="80" class="flex items-center justify-center" ></app-icon>
+                        </div>
+                        <p class="text-center w-[156px]" ><span class="font-bold text-[#F4B300]" >{{formattedData.credito_carbono}} créditos</span> de <br> carbono</p>
+                    </div>
+                      
+                </div>
+                
+            </div>
+        </section>
+        <section class="flex flex-col items-center w-full bg-white pt-10 pb-20 rounded-[20px] mt-10" >
+            <div class="w-[95%] lg:w-[900px] flex items-center justify-center gap-[5%] relative font-bold text-[25px] before:content-['.'] before:text-white before:w-[200px] before:border-b-2 before:border-[#EFEFEF] after:content-['.'] after:text-white after:w-[200px] after:border-b-2 after:border-[#EFEFEF] before:mt-[-55px] after:mt-[-55px]">
+                <h2 class="relative flex flex-col items-center justify-center after:content-['.'] after:text-white after:border-b-4 after:border-b-[#FFBB00] after:h-[20px] after:w-[92px] uppercase" >detalhamento das emissões</h2>
+            </div>
+            <div class="h-auto lg:h-[318px] flex flex-col w-[95%] lg:w-[900px] mt-15 " >
+                <p class="bg-[#013906] h-[73px] rounded-tl-[10px] rounded-tr-[10px] text-[20px] font-bold text-white flex items-center justify-center" >Rodoviário</p>
+                <div class="grid grid-cols-3 items-center justify-items-center h-auto max-lg:py-[10px] lg:h-[100px] bg-white" >
+                    <div class="flex items-center lg:gap-3 max-lg:flex-col" >
+                        <app-icon class="flex items-center justify-center bg-[#7F8486] rounded-full" name="home" [sizeW]="55" [sizeH]="55" ></app-icon>
+                        <p class="max-lg:w-[130px] max-lg:text-center max-sm:text-[13px]" >{{formattedData.origem}}</p>
+                    </div>
+                    <div class="flex flex-col" >
+                        <app-icon class="flex items-center h-[30px]" name="truck2" [sizeW]="58" [sizeH]="58" color="#013906" ></app-icon>
+                        <app-icon class="flex items-center h-[30px]" name="group60" [sizeW]="68" [sizeH]="58" color="#013906" ></app-icon>
+                    </div>
+                    <div class="flex items-center lg:gap-3 max-lg:flex-col" >
+                        <app-icon class="flex items-center justify-center bg-[#7F8486] rounded-full" name="home" [sizeW]="55" [sizeH]="55" ></app-icon>
+                        <p class="max-lg:w-[130px] max-lg:text-center max-lg:text-[13px]" >{{formattedData.destino}}</p>
+                    </div>  
+                </div>
+                <div class="h-[73px] flex bg-[#F5F5F5] items-center justify-center" >
+                    <p>Transporte Rodoviário</p>
+                </div>
+                <div class="h-[73px] text-[20px] flex bg-[#EFEFEF] items-center justify-center rounded-bl-[10px] rounded-br-[10px]" >
+                    <p>{{formattedData.total_rodoviario}} ton</p>
+                </div>
+            </div>
+            <div class="lg:h-[318px] flex flex-col w-[95%] lg:w-[900px] mt-15 " >
+                <p class="bg-[#013906] h-[73px] rounded-tl-[10px] rounded-tr-[10px] text-[20px] font-bold text-white flex items-center justify-center" >Marítimo</p>
+                <div class="flex w-full max-lg:flex-col" >
+                    <div class="flex flex-col items-center    justify-center w-full lg:w-[33%]" >
+                        <div class="flex h-[120px] pt-2 text-[13px] bg-white w-full max-lg:justify-between max-lg:px-5
+                        " >
+                            <div class="flex flex-col items-center gap-3  " >
+                                <app-icon class="flex items-center justify-center bg-[#7F8486] rounded-full" name="home" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.origem}}</p>
+                            </div>
+                            <div class="flex flex-col self-center" >
+                                <app-icon class="flex items-center h-[30px]" name="truck2" [sizeW]="48" [sizeH]="48" color="#013906" ></app-icon>
+                                <app-icon class="flex items-center h-[30px]" name="group60" [sizeW]="58" [sizeH]="48" color="#013906" ></app-icon>
+                            </div>
+                            <div class="flex flex-col items-center gap-3 " >
+                                <app-icon class="flex items-center justify-center bg-[#93B396] rounded-full" name="port" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.porto_origem}}</p>
+                            </div>  
+                        </div>
+                        <div class="w-full bg-[#F5F5F5] flex items-center justify-center h-[73px]" > <p>Transporte</p></div>
+                        <div class="w-full text-[20px] bg-[#EFEFEF] flex items-center justify-center h-[73px]" > <p>{{formattedData.rel_porta_porto}} ton</p></div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-full lg:w-[33%]" >
+                        <div class="flex h-[120px] pt-2 text-[13px] bg-white lg:border-x border-x-[#EDEDED] w-full max-lg:justify-between max-lg:px-5" >
+                            <div class="flex flex-col items-center gap-3  " >
+                                <app-icon class="flex items-center justify-center bg-[#93B396] rounded-full" name="port" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.porto_origem}}</p>
+                            </div>
+                            <div class="flex flex-col self-center" >
+                                <app-icon class="flex items-center h-[30px]" name="cargo-ship" [sizeW]="58" [sizeH]="58" color="#013906" ></app-icon>
+                                <app-icon class="flex items-center h-[30px]" name="group60" [sizeW]="58" [sizeH]="48" color="#013906" ></app-icon>
+                            </div>
+                            <div class="flex flex-col items-center gap-3" >
+                                <app-icon class="flex items-center justify-center bg-[#93B396] rounded-full" name="port" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.porto_destino}}</p>
+                            </div>  
+                        </div>
+                        <div class="w-full bg-[#F5F5F5] flex items-center justify-center h-[73px] border-x border-x-[#EDEDED]" >
+                            <div class="w-[50%] flex justify-center items-center h-[73px] border-r border-r-[#EDEDED]" >
+                                <p class="w-[80%] text-center" >Atividade Portuária</p>
+                            </div>
+                            <div class="w-[50%] flex justify-center items-center h-[73px]" >
+                                <p class="w-[80%] text-center" > Cabotagem </p>
+                            </div>
+                        </div>
+                        <div class="w-full text-[20px] bg-[#EFEFEF] flex items-center justify-center h-[73px] border-x border-x-[#EDEDED]" >
+                            <div class="w-[50%] flex justify-center items-center h-[73px] border-r border-r-[#EDEDED]" >
+                                <p class="w-[80%] text-center" >{{formattedData.rel_ativ_porto}} ton</p>
+                            </div>
+                            <div class="w-[50%] flex justify-center items-center h-[73px]" >
+                                <p class="w-[80%] text-center" > {{formattedData.rel_cabotagem}} ton</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-full lg:w-[33%]" >
+                        <div class="flex h-[120px] pt-2 text-[13px] bg-white w-full max-lg:justify-between max-lg:px-5" >
+                            <div class="flex flex-col items-center gap-3 " >
+                                <app-icon class="flex items-center justify-center bg-[#93B396] rounded-full" name="port" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.porto_destino}}</p>
+                            </div>
+                            <div class="flex flex-col self-center" >
+                                <app-icon class="flex items-center h-[30px]" name="truck2" [sizeW]="48" [sizeH]="48" color="#013906" ></app-icon>
+                                <app-icon class="flex items-center h-[30px]" name="group60" [sizeW]="58" [sizeH]="48" color="#013906" ></app-icon>
+                            </div>
+                            <div class="flex flex-col items-center gap-3" >
+                                <app-icon class="flex items-center justify-center bg-[#7F8486] rounded-full" name="home" [sizeW]="55" [sizeH]="55" ></app-icon>
+                                <p class="w-[130px] text-center" >{{formattedData.destino}}</p>
+                            </div>  
+                        </div>
+                        <div class=" bg-[#F5F5F5] flex items-center justify-center h-[73px] w-full" >
+                            <p>Transporte</p>
+                        </div>
+                        <div class=" text-[20px] bg-[#EFEFEF] flex items-center justify-center h-[73px] w-full" >
+                            <p>{{formattedData.rel_porto_porta}} ton</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-[20px] mt-20 mb-3" >Serviços mais rápidos:</p>
+            <div class="flex items-center justify-center w-[325px] h-[103px] bg-[#F0EFEF] rounded-[20px]" >
+                <p class="text-[25px] font-bold">{{formattedData.transit_time}}</p>
+            </div>
+            <button (click)="generatePdf()" type="button" class="generate-button w-[164px] mt-10 h-[72px] rounded-[10px] text-white font-bold bg-[linear-gradient(to_bottom,#6F9C73_0%,#005007_40%,#005007_60%,#6F9C73_100%)] cursor-pointer hover:bg-[linear-gradient(to_bottom,#005007)]" >CRIAR RELATÓRIO</button>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,87 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col w-full sm:w-[80%] max-w-[1513px] justify-self-center mt-7 gap-5 ">
+  
+  <div class="w-full flex max-lg:flex-col items-center justify-center gap-1 lg:gap-5 bg-white rounded-[20px] max-lg:py-10" >
+    <div class="w-[80%] lg:w-[35%] lg:py-10">
+      <div class="flex gap-3 mb-2" >
+        <app-icon name="pin" [sizeW]="25" class="items-center justify-center" ></app-icon>
+        <p class="font-semibold text-[20px] mt-1" >Cidade de Origem</p>
+      </div>
+      <app-input-select widthT="max-w-[497px] " (cidadeSelecionada)="form.get('cidade1')?.setValue($event); cidadeSelecionada1 = $event" titleText="Cidade de Origem" [listParam]="cidades" paramOne="cidade"  paramTwo="estado" [secondForm]="false"/>
+    </div>
+    <app-icon name="seta" [sizeW]="20" class="lg:mt-12 max-lg:rotate-90" ></app-icon>
+
+    <div class="w-[80%] lg:w-[35%]">
+      <div class="flex gap-3 mb-2" >
+        <app-icon name="pin" [sizeW]="25" class="items-center justify-center" ></app-icon>
+        <p class="font-semibold text-[20px] mt-1" >Cidade de Destino</p>
+      </div>
+      <app-input-select widthT="max-w-[497px] " (cidadeSelecionada)="form.get('cidade2')?.setValue($event); cidadeSelecionada2 = $event" titleText="Cidade de Destino" [listParam]="cidades"  paramOne="cidade" paramTwo="estado" [secondForm]="false" />
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col items-center justify-center gap-5 bg-white rounded-[20px] pb-15 mb-10">
+    <div class="flex items-center justify-center gap-7 border-b-4 border-b-[#F0EFEF] w-[90%] pb-7 mb-10 mt-15" >
+      <img src="../../../assets/img/box.png" alt="box" class="w-[100px] h-[100px]">
+      <h3 class="text-[25px] font-bold border-b-4 border-b-[#FFBB00]" >CARGA</h3>
+    </div>
+    <div class="flex flex-wrap items-center w-[80%] lg:w-[90%] gap-10" >
+        <div class="flex flex-col gap-2">
+          <p class="font-bold text-[19px] mt-1 mb-3" >Formato de containers:</p>
+          <app-input-select
+            (cidadeSelecionada)="form.get('container')?.setValue($event); containerSelecionado = $event"
+            titleText="Formato de containers:"
+            [listParam]="[
+              { value: 'Dry' },
+              { value: 'Reefer' }
+            ]"
+            paramOne="value"
+            paramTwo=""
+            [secondForm]="true"
+            widthT="w-[100%] lg:w-[197px]"
+          />
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-bold text-[19px] mt-1 mb-3" >Tipo de container:</p>
+          <app-input-select
+            (cidadeSelecionada)="form.get('typeContainer')?.setValue($event); typeContainerSelecionado = $event"
+            titleText="Tipo de container:"
+            [listParam]="[
+              { value: '20\'' },
+              { value: '40\'' },
+            ]"
+            paramOne="value"
+            paramTwo=""
+            [secondForm]="true"
+            widthT="w-[100%] lg:w-[197px]"
+          />
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-bold text-[19px] mt-1 mb-3" >Carregamento</p>
+          <app-input-select
+            (cidadeSelecionada)="form.get('load')?.setValue($event); loadSelecionado = $event"
+            titleText="Carregamento"
+            [listParam]="[
+              { value: 'TEU\'s' },
+              { value: 'Toneladas' },
+            ]"
+            paramOne="value"
+            paramTwo=""
+            [secondForm]="true"
+            widthT="w-[100%] lg:w-[297px]"
+          />
+        </div>
+        <div class="flex flex-col gap-5" >
+          <p class="font-bold text-[19px]" >Quantidade (TEU's)</p>
+          <input
+            formControlName="qtdTEU"
+            placeholder="Digite a resposta"
+            type="number"
+            class="outline-0 flex border-2 border-[#EFEFEF] px-3 py-3.5 rounded-[10px] w-[100%] lg:w-[87px]"
+          />
+        </div>
+    </div>
+  </div>
+
+  <button type="submit" class="w-[280px] h-[72px] rounded-[10px] text-white font-bold bg-[linear-gradient(to_bottom,#6F9C73_0%,#005007_40%,#005007_60%,#6F9C73_100%)] self-center cursor-pointer hover:bg-[linear-gradient(to_bottom,#005007)]" >CRIAR RELATÓRIO</button>
+
+</form>

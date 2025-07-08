@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./TodoApi
+    container_name: api
+    # Remove a exposição da porta para o host
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - app-network
+
+  frontend:
+    build: ./calculado-peso
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+networks:
+  app-network:
