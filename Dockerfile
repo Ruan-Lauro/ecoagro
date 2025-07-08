@@ -30,12 +30,13 @@ FROM nginx:alpine
 # Instalar .NET Runtime
 RUN apk add --no-cache icu-libs krb5-libs libgcc libintl libssl3 libstdc++ zlib
 
-# Baixar e instalar .NET Runtime
-RUN wget https://download.visualstudio.microsoft.com/download/pr/5226a5fa-8c0b-474f-b79a-8984ad7c5beb/3113ccbf789c9fd29972835f0f334b7a/aspnetcore-runtime-8.0.0-linux-musl-x64.tar.gz -O aspnetcore.tar.gz
-RUN mkdir -p /usr/share/dotnet
-RUN tar -zxf aspnetcore.tar.gz -C /usr/share/dotnet
-RUN rm aspnetcore.tar.gz
-RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+# Instalar .NET Runtime 9.0
+RUN apk add --no-cache bash curl icu-libs libgcc libstdc++ && \
+    curl -sSL https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && \
+    chmod +x dotnet-install.sh && \
+    ./dotnet-install.sh --version 9.0.0 --install-dir /usr/share/dotnet && \
+    rm dotnet-install.sh && \
+    ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # Copiar arquivos da API
 COPY --from=api-build /app/api /app/api
