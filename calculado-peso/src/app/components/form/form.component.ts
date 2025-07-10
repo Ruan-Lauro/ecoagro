@@ -17,6 +17,8 @@ export class FormComponent  {
   
     [x: string]: any;
 
+    error: string = '';
+
     constructor(private myservice: MyApiService, private router: Router) { }
 
     form = new FormGroup({
@@ -35,12 +37,18 @@ export class FormComponent  {
     loadSelecionado = '';
     qtdTEUSelecionado = '';
 
-    dataApi: Transport | undefined;
+    dataApi: Transport | undefined ;
 
     onSubmit() {
       if (this.form.valid) {
 
         const dadosForm = this.form.value;
+
+        if(dadosForm.qtdTEU === null || dadosForm.qtdTEU === undefined || dadosForm.qtdTEU === '' || isNaN(Number(dadosForm.qtdTEU)) || Number(dadosForm.qtdTEU) <= 0){
+          console.warn('Quantidade de TEUs inválida');
+          this.error = 'Quantidade de TEUs inválida';
+          return;
+        }
 
         this.myservice.criarItem({
           origem: dadosForm.cidade1!,
@@ -51,16 +59,18 @@ export class FormComponent  {
           quantidadeTEUs: Number(dadosForm.qtdTEU)
         }).subscribe({
           next: (res) => {
-            console.log('Dados salvos com sucesso:', res);
-            this.dataApi = res;
+            this.error = '';
+            this.dataApi = res ;
             if(this.dataApi?.arvores){
               this.router.navigate(['/result'], { state: { data: this.dataApi } });
             }else{
               console.error('Dados com problemas');
+              this.error = 'Dados com problemas';
             }
           },
           error: (erro) => {
             console.error('Erro ao salvar dados:', erro);
+            this.error = erro?.error.error || 'Erro desconhecido ao salvar dados.';
           }
         });
       } else {
@@ -82,4 +92,11 @@ export class FormComponent  {
       }
     });
   }
+
+  onlyNumbers(event: any) {
+    const input = event.target;
+    input.value = input.value.replace(/[^0-9]/g, '');
+    this.form.get('qtdTEU')?.setValue(input.value);
+  }
+
 }

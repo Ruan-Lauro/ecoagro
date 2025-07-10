@@ -36,6 +36,18 @@ public class Co2Controller : ControllerBase
     {
         try
         {
+            var listCidade = _co2Service.GetMunicipiosCidadeEstado();
+            var cidadeOrigem = request.origem.Split('-').Select(s => s.Trim()).ToList();
+            var cidadeDestino = request.destino.Split('-').Select(s => s.Trim()).ToList();
+
+            if (listCidade.Find(x => x.Cidade == cidadeOrigem[0] && x.Estado == cidadeOrigem[1]) == null)
+            {
+                return BadRequest(new { error = "Cidade de origem inválida." });
+
+            } else if (listCidade.Find(x => x.Cidade == cidadeDestino[0] && x.Estado == cidadeDestino[1]) == null) {
+                return BadRequest(new { error = "Cidade de destino inválida." });
+            }
+
             var distancia = await _co2Service.DistanciaCidades(request.origem, request.destino);
 
             var container = _co2Service.Container(request.carregamento, request.quantidadeTEUs, request.formatoDeContainers);

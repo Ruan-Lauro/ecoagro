@@ -1,0 +1,110 @@
+<div class="fixed inset-0 bg-gradient-to-br from-green-900/80 via-green-800/80 to-green-900/80 flex items-center justify-center z-50 ">
+      <div class="relative w-full px-8 max-w-[300px]">
+        
+        <!-- Cenário de fundo -->
+        <div class="relative h-64 overflow-hidden rounded-2xl bg-gradient-to-b from-sky-200 to-blue-300 shadow-2xl">
+          
+          <!-- Nuvens -->
+          <div class="absolute top-4 left-8 w-16 h-8 bg-white rounded-full opacity-80 animate-float"></div>
+          <div class="absolute top-8 right-12 w-12 h-6 bg-white rounded-full opacity-60 animate-float-delayed"></div>
+          
+          <!-- Sol -->
+          <div class="absolute top-6 right-8 w-12 h-12 bg-yellow-400 rounded-full shadow-lg animate-pulse"></div>
+          
+          <!-- Estrada para o caminhão -->
+          @if (currentPhase === 'truck') {
+            <div class="absolute bottom-16 left-0 w-full h-12 bg-gray-600 border-t-4 border-yellow-400 border-dashed"></div>
+            <div class="absolute bottom-12 left-0 w-full h-8 bg-gray-700"></div>
+          }
+          
+          <!-- Água para o barco -->
+          @if (currentPhase === 'boat') {
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-600 to-blue-400">
+              <div class="absolute inset-0 bg-blue-500 opacity-50 animate-wave"></div>
+              <div class="absolute inset-0 bg-blue-400 opacity-30 animate-wave-delayed"></div>
+            </div>
+          }
+          
+          <!-- Caminhão -->
+          @if (currentPhase === 'truck') {
+            <div class="absolute bottom-20 transition-all duration-75 ease-in-out animate-truck" 
+                 [style.left]="truckPosition + '%'">
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M40.4791 51.0875H3.48963C1.53537 51.0875 0 49.4125 0 47.4584V12.4229C0 10.4688 1.53537 8.93341 3.48963 8.93341H36.9896C38.9437 8.93341 40.4793 10.4688 40.4793 12.423V51.0875H40.4791Z" fill="#FFD15C"/>
+                  <path d="M66.0227 28.475L57.0894 19.5416C56.531 18.9833 55.6935 18.5645 54.856 18.5645H40.479V51.0875H63.3706C65.3249 51.0875 66.9999 49.4125 66.9999 47.4584V30.7084C66.9999 29.7313 66.7208 29.0334 66.0227 28.475Z" fill="#F3705A"/>
+                  <path d="M0 44.9459V47.4584C0 49.4125 1.53537 50.948 3.48963 50.948H63.3709C65.325 50.948 67 49.273 67 47.3189V44.8064H0V44.9459Z" fill="#344A5E"/>
+                  <path d="M62.2542 35.5938V31.2666L54.298 23.1709H45.2251V35.5938H62.2542Z" fill="#051039"/>
+                  <path d="M17.0291 58.0666C21.8087 58.0666 25.6832 54.192 25.6832 49.4125C25.6832 44.6329 21.8087 40.7584 17.0291 40.7584C12.2496 40.7584 8.375 44.6329 8.375 49.4125C8.375 54.192 12.2496 58.0666 17.0291 58.0666Z" fill="#415A6B"/>
+                  <path d="M17.029 53.6C19.3417 53.6 21.2165 51.7252 21.2165 49.4125C21.2165 47.0998 19.3417 45.225 17.029 45.225C14.7164 45.225 12.8416 47.0998 12.8416 49.4125C12.8416 51.7252 14.7164 53.6 17.029 53.6Z" fill="white"/>
+                  <path d="M52.2042 58.0666C56.9837 58.0666 60.8583 54.192 60.8583 49.4125C60.8583 44.6329 56.9837 40.7584 52.2042 40.7584C47.4246 40.7584 43.55 44.6329 43.55 49.4125C43.55 54.192 47.4246 58.0666 52.2042 58.0666Z" fill="#415A6B"/>
+                  <path d="M52.2041 53.6C54.5168 53.6 56.3916 51.7252 56.3916 49.4125C56.3916 47.0998 54.5168 45.225 52.2041 45.225C49.8914 45.225 48.0166 47.0998 48.0166 49.4125C48.0166 51.7252 49.8914 53.6 52.2041 53.6Z" fill="white"/>
+                  <path d="M8.79402 14.7959C7.11902 14.7959 5.72314 16.1917 5.72314 17.8667V35.873C5.72314 37.548 7.11902 38.9439 8.79402 38.9439C10.469 38.9439 11.8649 37.548 11.8649 35.873V17.8667C11.7253 16.1916 10.469 14.7959 8.79402 14.7959Z" fill="#F7B64C"/>
+                  <path d="M20.1002 14.7959C18.4252 14.7959 17.0293 16.1917 17.0293 17.8667V35.873C17.0293 37.548 18.4252 38.9439 20.1002 38.9439C21.7752 38.9439 23.1711 37.548 23.1711 35.873V17.8667C23.0314 16.1916 21.7752 14.7959 20.1002 14.7959Z" fill="#F7B64C"/>
+                  <path d="M31.4066 14.7959C29.7316 14.7959 28.3357 16.1917 28.3357 17.8667V35.873C28.3357 37.548 29.7316 38.9439 31.4066 38.9439C33.0816 38.9439 34.4774 37.548 34.4774 35.873V17.8667C34.3378 16.1916 33.0816 14.7959 31.4066 14.7959Z" fill="#F7B64C"/>
+                </svg>
+              </div>
+            </div>
+          }
+          
+          <!-- Barco -->
+          @if (currentPhase === 'boat') {
+            <div class="absolute bottom-8 transition-all duration-1000 ease-in-out animate-boat" 
+                 [style.left]="boatPosition + '%'">
+              <div class="transform hover:scale-105 transition-transform duration-300 animate-float">
+                <svg width="89" height="88" viewBox="0 0 89 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M77.875 45.375C76.7685 45.375 75.7074 44.9404 74.925 44.1668C74.1427 43.3932 73.7031 42.344 73.7031 41.25H76.4844C76.4844 41.5219 76.5659 41.7878 76.7187 42.0139C76.8715 42.24 77.0887 42.4163 77.3428 42.5203C77.5969 42.6244 77.8765 42.6516 78.1463 42.5986C78.4161 42.5455 78.6638 42.4146 78.8583 42.2223C79.0528 42.03 79.1852 41.785 79.2389 41.5182C79.2926 41.2515 79.265 40.9751 79.1598 40.7238C79.0545 40.4726 78.8763 40.2578 78.6476 40.1067C78.4189 39.9556 78.15 39.875 77.875 39.875C77.5062 39.875 77.1525 39.7301 76.8917 39.4723C76.6309 39.2144 76.4844 38.8647 76.4844 38.5V20.625H79.2656V37.3601C80.194 37.6841 80.9767 38.3223 81.4751 39.1618C81.9735 40.0013 82.1555 40.988 81.9891 41.9475C81.8226 42.9069 81.3183 43.7773 80.5654 44.4045C79.8125 45.0318 78.8595 45.3755 77.875 45.375Z" fill="#F9BB4B"/>
+                  <path d="M75.0938 50.875L72.3125 55H20.8594L18.0781 50.875H4.17188V56.375L9.73438 68.75H73.7031L84.8281 56.375V50.875H75.0938Z" fill="#4DA19A"/>
+                  <path d="M7.26172 63.25L9.73425 68.75H73.703L78.648 63.25H7.26172Z" fill="#F9BB4B"/>
+                  <path d="M8.34375 55H11.125V57.75H8.34375V55Z" fill="#8EC13F"/>
+                  <path d="M13.9062 55H16.6875V57.75H13.9062V55Z" fill="#8EC13F"/>
+                  <path d="M76.4844 55H79.2656V57.75H76.4844V55Z" fill="#8EC13F"/>
+                  <path d="M18.0781 50.875L20.8594 55H29.2031V44H9.73438V50.875H18.0781Z" fill="#CB2E5C"/>
+                  <path d="M29.2031 44H48.6719V55H29.2031V44Z" fill="#FFD782"/>
+                  <path d="M48.6719 44H68.1406V55H48.6719V44Z" fill="#CB2E5C"/>
+                  <path d="M12.5156 33H31.9844V44H12.5156V33Z" fill="#F9BB4B"/>
+                  <path d="M31.9844 33H51.4531V44H31.9844V33Z" fill="#F98C96"/>
+                  <path d="M31.9844 22H51.4531V33H31.9844V22Z" fill="#4DA19A"/>
+                  <path d="M36.1562 22H38.9375V28.875H36.1562V22Z" fill="#327C73"/>
+                  <path d="M41.7188 22H44.5V28.875H41.7188V22Z" fill="#327C73"/>
+                  <path d="M16.6875 37.125H19.4688V44H16.6875V37.125Z" fill="#D3843D"/>
+                  <path d="M22.25 33H25.0312V39.875H22.25V33Z" fill="#D3843D"/>
+                  <path d="M33.375 44H36.1562V50.875H33.375V44Z" fill="#D3843D"/>
+                  <path d="M38.9375 44H41.7188V50.875H38.9375V44Z" fill="#D3843D"/>
+                  <path d="M44.5 37.125H47.2812V44H44.5V37.125Z" fill="#DB527D"/>
+                  <path d="M38.9375 33H41.7188V39.875H38.9375V33Z" fill="#DB527D"/>
+                  <path d="M22.25 44H25.0312V50.875H22.25V44Z" fill="#B11E48"/>
+                  <path d="M52.8438 44H55.625V50.875H52.8438V44Z" fill="#B11E48"/>
+                  <path d="M58.4062 44H61.1875V50.875H58.4062V44Z" fill="#B11E48"/>
+                  <path d="M57.0156 27.5H62.5781V44H57.0156V27.5Z" fill="#2D75BB"/>
+                  <path d="M62.5781 31.625L76.4844 17.875L79.2656 20.625L62.5781 39.875V31.625Z" fill="#50B4F8"/>
+                </svg>
+              </div>
+            </div>
+          }
+          
+          <!-- Transição -->
+          @if (isTransitioning) {
+            <div class="absolute inset-0 bg-white animate-fade-in-out"></div>
+          }
+        </div>
+        
+        <!-- Texto de loading -->
+        <div class="mt-8 text-center">
+          <h2 class="text-2xl font-bold text-white mb-2 animate-pulse">
+            {{ currentPhase === 'truck' ? 'Preparando transporte...' : 'Navegando...' }}
+          </h2>
+          <div class="flex justify-center space-x-1">
+            <div class="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+            <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+          </div>
+        </div>
+        
+        <!-- Barra de progresso -->
+        <div class="mt-6 w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full transition-all duration-300 ease-out animate-progress"
+               [style.width]="progressWidth + '%'"></div>
+        </div>
+      </div>
+    </div>

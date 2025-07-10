@@ -1,0 +1,75 @@
+@keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes float-delayed {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    @keyframes wave {
+      0%, 100% { transform: translateX(0px) scaleX(1); }
+      50% { transform: translateX(-10px) scaleX(1.1); }
+    }
+    
+    @keyframes wave-delayed {
+      0%, 100% { transform: translateX(0px) scaleX(1); }
+      50% { transform: translateX(10px) scaleX(0.9); }
+    }
+    
+    @keyframes truck-move {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(20px); }
+    }
+    
+    @keyframes boat-move {
+      0% { transform: translateX(0px) rotate(0deg); }
+      25% { transform: translateX(5px) rotate(1deg); }
+      75% { transform: translateX(-5px) rotate(-1deg); }
+      100% { transform: translateX(0px) rotate(0deg); }
+    }
+    
+    @keyframes fade-in-out {
+      0% { opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0; }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-float-delayed {
+      animation: float-delayed 3s ease-in-out infinite;
+    }
+    
+    .animate-wave {
+      animation: wave 2s ease-in-out infinite;
+    }
+    
+    .animate-wave-delayed {
+      animation: wave-delayed 2.5s ease-in-out infinite;
+    }
+    
+    .animate-truck {
+      animation: truck-move 2s ease-in-out infinite;
+    }
+    
+    .animate-boat {
+      animation: boat-move 3s ease-in-out infinite;
+    }
+    
+    .animate-fade-in-out {
+      animation: fade-in-out 1s ease-in-out;
+    }
+    
+    .animate-progress {
+      animation: progress 2s ease-in-out infinite;
+    }
+    
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 100%; }
+      100% { width: 0%; }
+    }

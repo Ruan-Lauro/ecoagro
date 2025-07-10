@@ -1,65 +1,33 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { environment } from '../../../environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyApiService {
-  
-  private apiUrl = environment.apiUrl;
-  
-  constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+
+  private apiUrl = 'http://localhost:5096/api/Co2';
+
+  constructor(private http: HttpClient) { }
 
   getDados(): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.get<any>(`${this.apiUrl}/`);
-    } else {
-      return of([]);
-    }
+    return this.http.get<any>(`${this.apiUrl}/`);
   }
 
   getItemPorId(id: number): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.get<any>(`${this.apiUrl}/dados/${id}`);
-    } else {
-      return of(null);
-    }
+    return this.http.get<any>(`${this.apiUrl}/dados/${id}`);
   }
 
-  criarItem(dado: {
-    origem: string,
-    destino: string,
-    formatoDeContainers: string,
-    tipoContainers: string,
-    carregamento: string,
-    quantidadeTEUs: number
-  }): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.post<any>(`${this.apiUrl}/`, dado);
-    } else {
-      return of(null);
-    }
+  criarItem(dado: {origem: string, destino: string, formatoDeContainers: string, tipoContainers: string, carregamento: string, quantidadeTEUs:number}): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/`, dado);
   }
 
   atualizarItem(id: number, dado: any): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.put<any>(`${this.apiUrl}/dados/${id}`, dado);
-    } else {
-      return of(null);
-    }
+    return this.http.put<any>(`${this.apiUrl}/dados/${id}`, dado);
   }
 
   deletarItem(id: number): Observable<any> {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.http.delete<any>(`${this.apiUrl}/dados/${id}`);
-    } else {
-      return of(null);
-    }
+    return this.http.delete<any>(`${this.apiUrl}/dados/${id}`);
   }
 }

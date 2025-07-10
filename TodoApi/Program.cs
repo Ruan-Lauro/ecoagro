@@ -15,13 +15,15 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:80",    
-                "http://frontend"         
+                "http://localhost:80",
+                "http://frontend"
               )
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
+
+
 
 var app = builder.Build();
 

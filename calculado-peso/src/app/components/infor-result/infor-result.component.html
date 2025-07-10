@@ -124,7 +124,7 @@
                             </div>
                             <div class="flex flex-col items-center gap-3 " >
                                 <app-icon class="flex items-center justify-center bg-[#93B396] rounded-full" name="port" [sizeW]="55" [sizeH]="55" ></app-icon>
-                                <p class="w-[130px] text-center" >{{formattedData.porto_origem}}</p>
+                                <p class="w-[120px] text-center" >{{formattedData.porto_origem}}</p>
                             </div>  
                         </div>
                         <div class="w-full bg-[#F5F5F5] flex items-center justify-center h-[73px]" > <p>Transporte</p></div>
@@ -194,3 +194,6 @@
         </section>
     </div>
 </main>
+@if(Caminhaoloading){
+    <app-loading-component [isLoading]="true" ></app-loading-component>
+}
